@@ -1,0 +1,32 @@
+#container {
+    display: flex;
+}
+
+#PollList, #PollResult {
+    width : 30%;
+    margin : 1% 0.5%;
+    position: relative;
+    display: inline-block;
+}
+
+.box {
+    margin-top : 3%;
+    height : 650px; /* 비율로 수정 SOS... */
+    border : 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    box-shadow: 1px 1px 2px 1px #eee;
+
+    position: relative;
+}
+
+.pollCreate{
+    width: 100%;
+    height: 30px;
+    display: block;
+    position: absolute; /*???*/
+    color : #bbb;
+    font-size: 20px;
+    align-items: center;
+}

@@ -1,0 +1,39 @@
+body {
+
+}
+
+
+#questionForm {
+    min-width : 550px;
+    width : 50%;
+    position: relative;
+    display: inline-block;
+}
+
+#questionList {
+    min-width : 550px;
+    width : 50%;
+    margin : 1% 0.5%;
+    position: relative;
+    display: inline-block;
+}
+
+.formBox{
+    margin-top : 3%;
+    height : 120px;
+    border : 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    box-shadow: 1px 1px 2px 1px #eee;
+}
+
+.listBox {
+    margin-top : 3%;
+    height : 150px; /* 비율로 수정 SOS... */
+    border : 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    box-shadow: 1px 1px 2px 1px #eee;
+}
