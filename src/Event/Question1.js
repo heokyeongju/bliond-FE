@@ -11,12 +11,7 @@ function Question() {
           backgroundColor: '#f8f9fa',
           height: '800px',
           marginTop : '100px',
-          paddingTop: '30px',
-          display: 'flex',
-          justifyContent : 'space-evenly', // 좀 더 가까이 가능?
-          alignItems: 'center',
-          flexWrap : 'wrap'
-
+          paddingTop: '30px'
       }}>
 
       <div id="questionForm">
