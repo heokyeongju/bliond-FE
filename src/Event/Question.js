@@ -1,6 +1,8 @@
 import './Question.css';
+import '../Base/ToastEditor.js';
 import { Input, Button } from 'antd';
 import React from 'react';
+import EditorBox from "../Base/ToastEditor";
 const { TextArea } = Input;
 
 
@@ -9,32 +11,24 @@ function Question() {
     <div id="Container" /* 전체 */
       style={{
           backgroundColor: '#f8f9fa',
-          height: '800px',
+          height: '725px',
           marginTop : '100px',
           paddingTop: '30px',
           display: 'flex',
           justifyContent : 'space-evenly', // 좀 더 가까이 가능?
-          alignItems: 'center',
+          // alignItems: 'center',
           flexWrap : 'wrap'
 
       }}>
 
       <div id="questionForm">
           <h4>Question form</h4>
-          <div className="formBox">
-              <TextArea
-                        placeholder="익명으로 편하게 질문해주세요~"  bordered={false}
-                        autoSize={{
-                            minRows: 4,
-                            maxRows: 8,
-                        }}
-              />
-              <Button type="primary" shape="round">
-                  Send
-              </Button>
+          <div id ="editor">
+              <EditorBox></EditorBox>
           </div>
-
-
+          <Button className="button">
+              질문 작성
+          </Button>
       </div>
 
       <div id="questionList">
