@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.PollBox {
+#PollBox {
   height: 500px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -20,9 +20,27 @@
 
 .button {
   background-color: #2367a6;
-  width: 120px;
+  width: 100px;
   height: 35px;
   border-radius: 5px;
   color: white;
-  align-self: flex-end;
+}
+
+.pollHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.text{
+  width: 430px;
+}
+
+.pollContent {
+  magin : 10%;
+  /*display: flex;*/
+  /*!*flex-wrap: wrap;*!*/
+  /*flex-direction : column ;*/
+  /*justify-content: space-between;*/
 }

@@ -10,11 +10,11 @@ const EventLayout = () => {
       <Layout>
         {/** Header 안쪽으로 사용자 정보 */}
         <Header id="header">
-          <div className="list">List</div>
+          <div className="home">Home</div>
           <div className="logo">
             사용자 정보, events_id for admin, events_name for user ...
           </div>
-          <div className="user">user</div>
+          <div className="user">User</div>
 
         </Header>
         {/** Menu items와 관련하여, 코드를 변경해야할 수 있음. navigation 적용*/}
