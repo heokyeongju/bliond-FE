@@ -81,19 +81,25 @@ function Poll() {
                     </Button>,
                 ]}>
 
+            <Radio.Group onChange={onChange} value={value}>
                 <Space direction="vertical">
-                    <TextArea
-                    className="optionText"
-                    placeholder="Option" autoSize maxLength={25} />
-
-                    <TextArea
-                    className="optionText"
-                    placeholder="Option" autoSize maxLength={25} />
-
-                    <TextArea
-                    className="optionText"
-                    placeholder="Option" autoSize maxLength={25} />
+                    <Radio value={1}>
+                        <TextArea
+                        className="optionText"
+                        placeholder="Option" autoSize maxLength={25} />
+                    </Radio>
+                    <Radio value={2}>
+                        <TextArea
+                        className="optionText"
+                        placeholder="Option" autoSize maxLength={25} />
+                    </Radio>
+                    <Radio value={3}>
+                        <TextArea
+                        className="optionText"
+                        placeholder="Option" autoSize maxLength={25} />
+                    </Radio>
                 </Space>
+            </Radio.Group>
             </Modal>
         </div>
     );

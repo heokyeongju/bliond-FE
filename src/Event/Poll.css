@@ -33,10 +33,16 @@
   margin-bottom: 5px;
 }
 
-.text{
-  min-width: 300px;
-  width: 430px;
+.titleText{
+  max-width: 300px;
+  width: 620px;
 }
+
+.optionText{
+  max-width: 300px;
+  width: 620px;
+}
+
 
 .pollContent {
   margin : 13px;
@@ -46,6 +52,4 @@
   /*justify-content: space-between;*/
 }
 
-.modal {
-  height :80%;
-}
+
