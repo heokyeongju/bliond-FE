@@ -1,16 +1,19 @@
-import { Button, Checkbox, Col, Row, Modal, Input} from 'antd';
+import { Button, Checkbox, Col, Row, Modal, Input, Radio, Space} from 'antd';
 
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import './Poll.css';
 
-const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-};
-
 const { TextArea } = Input;
 
 function Poll() {
+
+    const [value, setValue] = useState(1);
+
+    const onChange = (e) => {
+        console.log('radio checked', e.target.value);
+        setValue(e.target.value);
+    };
 
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
@@ -57,11 +60,15 @@ function Poll() {
             </div>
 
             <Modal
+                width={800}
+                style={{ top: 180}}
+                bodyStyle={{height:400}}
                 open={open}
                 title={
                     <TextArea
                         className="text"
-                        placeholder="Title" autoSize/>}
+                        placeholder="Title" autoSize
+                        maxLength={50} />}
 
                 onOk={handleOk}
                 onCancel={handleCancel}
@@ -74,29 +81,27 @@ function Poll() {
                     </Button>,
                 ]}>
 
-                <div className="pollContent">
-                    <Checkbox onChange={onChange}>
-                        <TextArea
+                <Radio.Group onChange={onChange} value={value}>
+                    <Space direction="vertical">
+                        <Radio value={1}>
+                            <TextArea
                             className="text"
-                        placeholder="Title" autoSize maxLength={20} />
-                    </Checkbox>
-                </div>
-                <div className="pollContent">
-                    <Checkbox onChange={onChange}>
-                        <TextArea
+                            placeholder="Option" autoSize maxLength={25} />
+                        </Radio>
+                        <Radio value={2}>
+                            <TextArea
                             className="text"
-                            placeholder="Title" autoSize maxLength={20} />
-                    </Checkbox>
-                </div>
-                <div className="pollContent">
-                    <Checkbox onChange={onChange}>
-                        <TextArea
+                            placeholder="Option" autoSize maxLength={25} />
+                        </Radio>
+                        <Radio value={3}>
+                            <TextArea
                             className="text"
-                            placeholder="Title" autoSize maxLength={20} />
-                    </Checkbox>
-                </div>
-            </Modal>
+                            placeholder="Option" autoSize maxLength={25} />
+                        </Radio>
 
+                    </Space>
+                </Radio.Group>
+            </Modal>
         </div>
     );
 }

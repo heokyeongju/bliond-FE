@@ -34,13 +34,18 @@
 }
 
 .text{
+  min-width: 300px;
   width: 430px;
 }
 
 .pollContent {
-  magin : 10%;
+  margin : 13px;
   /*display: flex;*/
   /*!*flex-wrap: wrap;*!*/
   /*flex-direction : column ;*/
   /*justify-content: space-between;*/
+}
+
+.modal {
+  height :80%;
 }
