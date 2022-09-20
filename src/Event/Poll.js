@@ -1,4 +1,5 @@
-import { Checkbox, Col, Row } from 'antd';
+import { Button, Checkbox, Col, Row } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import './Poll.css';
 
 const onChange = (checkedValues) => {
@@ -15,21 +16,15 @@ function Poll() {
         marginTop: '100px',
         paddingTop: '30px',
         display: 'flex',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
         flexWrap: 'wrap',
       }}>
       <div id="PollList">
-        <h4>Poll list</h4>
-        <div className="box">
-          <div className="pollCreate">
-            <p>Create new poll</p>
-          </div>
-        </div>
-      </div>
-
-      <div id="PollResult">
-        <h4>Poll result</h4>
-        <div className="box"></div>
+        <span>Poll list</span>
+        <Button icon={<PlusOutlined />} className="button">
+          Create New
+        </Button>
+        <div className="PollBox"> poll </div>
       </div>
     </div>
   );
