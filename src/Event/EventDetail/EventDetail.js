@@ -11,7 +11,6 @@ function EventDetail() {
       <EventLayout></EventLayout>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
           <Route path="/event" element={<Home />}></Route>
           <Route path="/event/1/questions" element={<Question />}></Route>
           <Route path="/event/1/polls" element={<Poll />}></Route>
