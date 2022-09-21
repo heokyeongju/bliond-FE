@@ -1,6 +1,6 @@
 import React from 'react';
 import EventLayout from '../EventLayout';
-import Home from '../../Home';
+import Home from '../Home';
 import Question from '../Question';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Poll from '../Poll';

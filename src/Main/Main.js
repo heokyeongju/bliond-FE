@@ -1,4 +1,4 @@
-import arrow from './arrow.png';
+import arrow from '../arrow.png';
 import { NavLink } from 'react-router-dom';
 
 function Main() {
