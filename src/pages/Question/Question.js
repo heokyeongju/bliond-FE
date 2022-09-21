@@ -1,8 +1,8 @@
 import './Question.css';
-import '../Base/ToastEditor.js';
+import '../../components/ToastEditor.js';
 import { Button } from 'antd';
 import React from 'react';
-import EditorBox from '../Base/ToastEditor';
+import EditorBox from '../../components/ToastEditor';
 
 function Question() {
   return (
