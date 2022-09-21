@@ -1,4 +1,5 @@
 import arrow from '../arrow.png';
+import BliondLogo from '../BliondLogo.png';
 import { NavLink } from 'react-router-dom';
 
 function Main() {
@@ -13,12 +14,14 @@ function Main() {
         fontSize: '100px',
         flexDirection: 'column',
       }}>
-      <div>BLIOND</div>
-      <NavLink to="/login">
         <div>
-          <img src={arrow} width="150px" height="120px" alt="" />
+            <img src={BliondLogo} width="320px" alt=" " />
         </div>
-      </NavLink>
+        <NavLink to="/login">
+            <div>
+                <img src={arrow} width="150px" height="120px" alt="" />
+            </div>
+        </NavLink>
     </div>
   );
 }
