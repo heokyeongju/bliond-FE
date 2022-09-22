@@ -9,7 +9,7 @@ class App extends Component {
         <Routes>
           <Route exact path="/" element={<Main />} />
           <Route path="/member/login" element={<Login />} />
-          <Route path="/event/:id" element={<Home />} />
+          <Route path="/events" element={<Home />} />
           <Route path="/event/:id/questions" element={<Question />} />
           <Route path="/event/:id/polls" element={<Poll />} />
         </Routes>

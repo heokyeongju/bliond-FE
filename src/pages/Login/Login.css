@@ -9,12 +9,10 @@
 }
 
 .button {
-  width : 300px;
-  height : 47px;
   background-color: transparent;
   border-radius: 8px;
-  border : 1px solid black;
-  color : black;
+  border: 1px solid black;
+  color: black;
   font-weight: bold;
   text-align: center;
 }
@@ -23,26 +21,30 @@
   text-align: center;
 }
 
-.site-button-ghost-wrapper{
+.site-button-ghost-wrapper {
   height: 120px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
-.kakaoLogo{
-  width : 24px;
-  height : 24px;
+.kakaoLogo {
+  width: 24px;
+  height: 24px;
   margin-right: 10px;
 }
 
-.BliondLogo{
-  width : 200px;
+.BliondLogo {
+  width: 200px;
   margin-top: -65px;
 }
 
-h6{
+h6 {
   font-size: 30px;
 }
 
-p{
+p {
   font-size: 14px;
   text-align: center;
   margin-top: -9px;

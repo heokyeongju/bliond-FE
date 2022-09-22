@@ -10,18 +10,19 @@
   padding: 0px;
   color: #fff;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .home {
-  width: 10%;
+  width: 50px;
 }
 .logo {
-  width: 80%;
+  width: 400px;
 }
 .user {
-  width: 10%;
+  width: 50px;
 }
-
 
 .menu {
   position: fixed;

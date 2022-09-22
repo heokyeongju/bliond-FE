@@ -3,6 +3,7 @@ import { Button, Modal, Input, Space } from 'antd';
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import './Poll.css';
+import EventLayout from '../../components/EventLayout';
 
 const { TextArea } = Input;
 
@@ -34,80 +35,83 @@ function Poll() {
   };
 
   return (
-    <div
-      id="Container" /* 전체 */
-      style={{
-        backgroundColor: '#f8f9fa',
-        height: '725px',
-        marginTop: '80px',
-        paddingTop: '30px',
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-      }}>
-      <div id="PollList">
-        <div className="pollHeader">
-          <Button
-            icon={<PlusOutlined />}
-            className="button"
-            onClick={showModal}>
-            Create
-          </Button>
+    <>
+      <EventLayout />
+      <div
+        id="Container" /* 전체 */
+        style={{
+          backgroundColor: '#f8f9fa',
+          height: '725px',
+          marginTop: '80px',
+          paddingTop: '30px',
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+        <div id="PollList">
+          <div className="pollHeader">
+            <Button
+              icon={<PlusOutlined />}
+              className="button"
+              onClick={showModal}>
+              Create
+            </Button>
+          </div>
+          <div id="PollBox"> poll </div>
         </div>
-        <div id="PollBox"> poll </div>
+
+        <Modal
+          width={800}
+          style={{ top: 180 }}
+          bodyStyle={{ height: 400 }}
+          open={open}
+          title={
+            <TextArea
+              className="titleText"
+              placeholder="Title"
+              autoSize
+              maxLength={50}
+            />
+          }
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              Return
+            </Button>,
+            <Button
+              key="submit"
+              type="primary"
+              loading={loading}
+              onClick={handleOk}>
+              Send
+            </Button>,
+          ]}>
+          <Space direction="vertical">
+            <TextArea
+              className="optionText"
+              placeholder="Option"
+              autoSize
+              maxLength={25}
+            />
+
+            <TextArea
+              className="optionText"
+              placeholder="Option"
+              autoSize
+              maxLength={25}
+            />
+
+            <TextArea
+              className="optionText"
+              placeholder="Option"
+              autoSize
+              maxLength={25}
+            />
+          </Space>
+        </Modal>
       </div>
-
-      <Modal
-        width={800}
-        style={{ top: 180 }}
-        bodyStyle={{ height: 400 }}
-        open={open}
-        title={
-          <TextArea
-            className="titleText"
-            placeholder="Title"
-            autoSize
-            maxLength={50}
-          />
-        }
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Return
-          </Button>,
-          <Button
-            key="submit"
-            type="primary"
-            loading={loading}
-            onClick={handleOk}>
-            Send
-          </Button>,
-        ]}>
-        <Space direction="vertical">
-          <TextArea
-            className="optionText"
-            placeholder="Option"
-            autoSize
-            maxLength={25}
-          />
-
-          <TextArea
-            className="optionText"
-            placeholder="Option"
-            autoSize
-            maxLength={25}
-          />
-
-          <TextArea
-            className="optionText"
-            placeholder="Option"
-            autoSize
-            maxLength={25}
-          />
-        </Space>
-      </Modal>
-    </div>
+    </>
   );
 }
 
