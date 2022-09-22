@@ -18,10 +18,10 @@
   box-shadow: 1px 1px 2px 1px #eee;
 }
 
-.button {
+.pollButton {
   background-color: #2367a6;
-  width: 100px;
-  height: 35px;
+  width: 200px;
+  height: 40px;
   border-radius: 5px;
   color: white;
 }
@@ -33,23 +33,20 @@
   margin-bottom: 5px;
 }
 
-.titleText{
+.titleText {
   max-width: 300px;
   width: 620px;
 }
 
-.optionText{
+.optionText {
   max-width: 300px;
   width: 620px;
 }
-
 
 .pollContent {
-  margin : 13px;
+  margin: 13px;
   /*display: flex;*/
   /*!*flex-wrap: wrap;*!*/
   /*flex-direction : column ;*/
   /*justify-content: space-between;*/
 }
-
-

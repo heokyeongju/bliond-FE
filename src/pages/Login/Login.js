@@ -22,7 +22,7 @@ function Login() {
         </div>
       </div>
       <div className="site-button-ghost-wrapper">
-        <Button width="300px" height="100px" className="button">
+        <Button width="300px" height="100px" className="loginButton">
           <img src={kakaoLogo} className="kakaoLogo" alt=" " />
           카카오 로그인
         </Button>

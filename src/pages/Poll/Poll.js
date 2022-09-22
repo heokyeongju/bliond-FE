@@ -52,7 +52,7 @@ function Poll() {
           <div className="pollHeader">
             <Button
               icon={<PlusOutlined />}
-              className="button"
+              className="pollButton"
               onClick={showModal}>
               Create
             </Button>

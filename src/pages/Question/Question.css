@@ -1,42 +1,40 @@
-
-
 #questionForm {
-    min-width : 350px;
-    width : 35%;
-    position: relative;
-    margin-top: 30px;
+  min-width: 350px;
+  width: 35%;
+  position: relative;
+  margin-top: 30px;
 }
 
 #questionList {
-    min-width : 350px;
-    margin-top: 30px;
-    width : 35%;
-    position: relative;
+  min-width: 350px;
+  margin-top: 30px;
+  width: 35%;
+  position: relative;
 }
 
-.formBox{
-    height : 500px;
-    border : 1px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    display: flex;
-    box-shadow: 1px 1px 2px 1px #eee;
+.formBox {
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  display: flex;
+  box-shadow: 1px 1px 2px 1px #eee;
 }
 
 .listBox {
-    height : 500px;
-    border : 1px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    display: flex;
-    box-shadow: 1px 1px 2px 1px #eee;
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  display: flex;
+  box-shadow: 1px 1px 2px 1px #eee;
 }
 
-.button {
-    background-color: #2367a6;
-    width : 100%;
-    height: 40px;
-    border-radius: 5px;
-    color: white;
-    margin-top : 10px;
+.questionButton {
+  background-color: #2367a6;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 10px;
 }

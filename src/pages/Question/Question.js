@@ -25,7 +25,7 @@ function Question() {
           <div id="editor">
             <EditorBox></EditorBox>
           </div>
-          <Button className="button">질문 작성</Button>
+          <Button className="questionButton">질문 작성</Button>
         </div>
 
         <div id="questionList">
