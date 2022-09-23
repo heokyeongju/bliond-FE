@@ -1,9 +1,13 @@
 import './Login.css';
-import kakaoLogo from '../../resource/kakaoLogo.png';
 import BliondLogo from '../../resource/BliondLogo.png';
+import kakao_login_medium_wide from '../../resource/kakao_login_medium_wide.png';
 import { Button } from 'antd';
+import { Cookies } from 'react-cookie';
+import { axios } from 'axios';
 
 function Login() {
+  const token = new URL(window.location.href).searchParams.get('accessToken');
+
   return (
     <div
       style={{
@@ -22,11 +26,9 @@ function Login() {
         </div>
       </div>
       <div className="site-button-ghost-wrapper">
-        <Button width="300px" height="100px" className="loginButton">
-          <img src={kakaoLogo} className="kakaoLogo" alt=" " />
-          카카오 로그인
-        </Button>
-        <p>카카오로 시작하기</p>
+        <a href="http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/event/1/questions">
+          <img src={kakao_login_medium_wide} alt=" " />
+        </a>
       </div>
     </div>
   );
