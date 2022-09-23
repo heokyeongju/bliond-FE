@@ -5,27 +5,12 @@ import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import CustomHeader from '../components/Header';
 import { useCookies } from 'react-cookie';
+import { useRecoilState } from 'recoil';
 
 const { TextArea } = Input;
 
 function Events(match, loacation) {
   const [value, setValue] = useState(1);
-  const [cookies, setCookie] = useCookies(['jwtCookie']);
-
-  const token = new URL(window.location.href).searchParams.get('accessToken');
-  const accessTokenExpiration = new URL(window.location.href).searchParams.get(
-    'expiresIn',
-  );
-
-  useEffect(() => {
-    if (token) {
-      setCookie('jwtCookie', token);
-      setCookie('jwtExpireCookie', accessTokenExpiration);
-    }
-  });
-
-  console.log('jwt : ' + cookies.jwtCookie);
-  console.log('expire : ' + cookies.jwtExpireCookie);
 
   const onChange = (e) => {
     console.log('radio checked', e.target.value);
