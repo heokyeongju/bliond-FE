@@ -21,7 +21,9 @@ function Login() {
       }}>
       <div className="serveMain">
         <div>
-          <h6>당신의 모든 궁금증을 위한 곳</h6>
+          <h6 style={{ fontFamily: 'GowunBatang-Regular' }}>
+            당신의 모든 궁금증을 위한 곳
+          </h6>
           <img src={BliondLogo} className="BliondLogo" alt=" " />
         </div>
       </div>

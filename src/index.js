@@ -4,6 +4,7 @@ import Root from './Root';
 import ReactDOM from 'react-dom';
 import { CookiesProvider } from 'react-cookie';
 import { RecoilRoot } from 'recoil';
+import './index.css';
 
 ReactDOM.render(
   <CookiesProvider>
