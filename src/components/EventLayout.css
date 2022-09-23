@@ -1,29 +1,5 @@
 @import '~antd/dist/antd.css';
 
-#header {
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  height: 64px;
-  background-color: #2367a6;
-  margin: 0px;
-  padding: 0px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.home {
-  width: 50px;
-}
-.logo {
-  width: 400px;
-}
-.user {
-  width: 50px;
-}
-
 .menu {
   position: fixed;
   margin-top: 64px;

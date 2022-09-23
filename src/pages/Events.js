@@ -1,8 +1,9 @@
 import './Events.css'
-import EventLayout from "../components/EventLayout";
+
 import {Button, Input, Modal, Space} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 import React, {useState} from "react";
+import CustomHeader from "../components/Header";
 
 const { TextArea } = Input;
 
@@ -34,11 +35,11 @@ function Events() {
   };
   return (
       <div>
-        <EventLayout />
+        <CustomHeader />
         <div
             id="Container" /* 전체 */
             style={{
-              backgroundColor: '#f8f9fa',
+              // backgroundColor: '#f8f9fa',
               height: '725px',
               marginTop: '80px',
               paddingTop: '30px',

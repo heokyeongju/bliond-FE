@@ -26,7 +26,7 @@ function Login() {
         </div>
       </div>
       <div className="site-button-ghost-wrapper">
-        <a href="http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/event/1/questions">
+        <a href="http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/events">
           <img src={kakao_login_medium_wide} alt=" " />
         </a>
       </div>

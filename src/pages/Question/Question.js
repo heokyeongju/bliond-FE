@@ -12,7 +12,7 @@ function Question() {
       <div
         id="Container" /* 전체 */
         style={{
-          backgroundColor: '#f8f9fa',
+          // backgroundColor: '#f8f9fa',
           height: '725px',
           marginTop: '100px',
           paddingTop: '30px',
