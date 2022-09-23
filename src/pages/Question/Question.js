@@ -5,7 +5,7 @@ import React from 'react';
 import EditorBox from '../../components/ToastEditor';
 import EventLayout from '../../components/EventLayout';
 
-function Question() {
+const Question = () => {
   return (
     <>
       <EventLayout />
@@ -35,6 +35,6 @@ function Question() {
       </div>
     </>
   );
-}
+};
 
 export default Question;

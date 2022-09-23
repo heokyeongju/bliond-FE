@@ -9,7 +9,7 @@ import { useRecoilState } from 'recoil';
 
 const { TextArea } = Input;
 
-function Events(match, loacation) {
+const Events = () => {
   const [value, setValue] = useState(1);
 
   const onChange = (e) => {
@@ -99,6 +99,6 @@ function Events(match, loacation) {
       </Modal>
     </div>
   );
-}
+};
 
 export default Events;

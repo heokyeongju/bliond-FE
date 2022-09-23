@@ -2,7 +2,7 @@ import arrow from '../../resource/arrow.png';
 import BliondLogo from '../../resource/BliondLogo.png';
 import { NavLink } from 'react-router-dom';
 
-function Main() {
+const Main = () => {
   return (
     <div
       style={{
@@ -24,5 +24,5 @@ function Main() {
       </NavLink>
     </div>
   );
-}
+};
 export default Main;

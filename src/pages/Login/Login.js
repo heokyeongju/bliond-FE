@@ -1,11 +1,8 @@
 import './Login.css';
 import BliondLogo from '../../resource/BliondLogo.png';
 import kakao_login_medium_wide from '../../resource/kakao_login_medium_wide.png';
-import { Button } from 'antd';
-import { Cookies } from 'react-cookie';
-import { axios } from 'axios';
 
-function Login() {
+const Login = () => {
   const token = new URL(window.location.href).searchParams.get('accessToken');
 
   return (
@@ -34,5 +31,5 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 export default Login;

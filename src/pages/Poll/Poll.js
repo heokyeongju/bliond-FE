@@ -7,7 +7,7 @@ import EventLayout from '../../components/EventLayout';
 
 const { TextArea } = Input;
 
-function Poll() {
+const Poll = () => {
   const [value, setValue] = useState(1);
 
   const onChange = (e) => {
@@ -113,6 +113,6 @@ function Poll() {
       </div>
     </>
   );
-}
+};
 
 export default Poll;
