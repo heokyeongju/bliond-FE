@@ -1,8 +1,22 @@
+
+
+.form-control {
+  border: 0.5px #00cc66 solid;
+}
+
+.form-control:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #00cc66;
+}
+
+.card:hover {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px #00cc66;
+  cursor: pointer;
+}
+
 #container {
   display: flex;
 }
-
-#PollList {
+#EventList {
   min-width: 350px;
   margin-top: 30px;
   width: 60%;
@@ -33,20 +47,12 @@
   margin-bottom: 5px;
 }
 
-.titleText {
-  max-width: 300px;
-  width: 620px;
+.eventFormText {
+  min-width: 300px;
+  width: 450px;
 }
 
-.optionText {
-  max-width: 300px;
-  width: 620px;
-}
-
-.pollContent {
-  margin: 13px;
-  /*display: flex;*/
-  /*!*flex-wrap: wrap;*!*/
-  /*flex-direction : column ;*/
-  /*justify-content: space-between;*/
+.eventTitleText {
+  min-width: 300px;
+  width: 400px;
 }
