@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, redirect } from 'react-router-dom';
 import { Main, Login, Events, Question, Poll } from './pages';
 
 class App extends Component {
@@ -8,10 +8,10 @@ class App extends Component {
       <div>
         <Routes>
           <Route exact path="/" element={<Main />} />
-          <Route path="/member/login" element={<Login />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/event/:id/questions" element={<Question />} />
-          <Route path="/event/:id/polls" element={<Poll />} />
+          <Route exact path="/member/login" element={<Login />} />
+          <Route exact path="/events" element={<Events />} />
+          <Route exact path="/event/:id/questions" element={<Question />} />
+          <Route exact path="/event/:id/polls" element={<Poll />} />
         </Routes>
       </div>
     );

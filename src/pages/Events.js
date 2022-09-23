@@ -1,14 +1,31 @@
-import './Events.css'
+import './Events.css';
 
-import {Button, Input, Modal, Space} from "antd";
-import {PlusOutlined} from "@ant-design/icons";
-import React, {useState} from "react";
-import CustomHeader from "../components/Header";
+import { Button, Input, Modal, Space } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
+import CustomHeader from '../components/Header';
+import { useCookies } from 'react-cookie';
 
 const { TextArea } = Input;
 
-function Events() {
+function Events(match, loacation) {
   const [value, setValue] = useState(1);
+  const [cookies, setCookie] = useCookies(['jwtCookie']);
+
+  const token = new URL(window.location.href).searchParams.get('accessToken');
+  const accessTokenExpiration = new URL(window.location.href).searchParams.get(
+    'expiresIn',
+  );
+
+  useEffect(() => {
+    if (token) {
+      setCookie('jwtCookie', token);
+      setCookie('jwtExpireCookie', accessTokenExpiration);
+    }
+  });
+
+  console.log('jwt : ' + cookies.jwtCookie);
+  console.log('expire : ' + cookies.jwtExpireCookie);
 
   const onChange = (e) => {
     console.log('radio checked', e.target.value);
@@ -33,70 +50,69 @@ function Events() {
   const handleCancel = () => {
     setOpen(false);
   };
+
   return (
-      <div>
-        <CustomHeader />
-        <div
-            id="Container" /* 전체 */
-            style={{
-              // backgroundColor: '#f8f9fa',
-              height: '725px',
-              marginTop: '80px',
-              paddingTop: '30px',
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}>
-          <div id="EventList">
-            <div className="pollHeader">
-              <Button
-                  icon={<PlusOutlined />}
-                  className="pollButton"
-                  onClick={showModal}>
-                Create
-              </Button>
-            </div>
-            <div id="PollBox"> evnets </div>
+    <div>
+      <CustomHeader />
+      <div
+        id="Container" /* 전체 */
+        style={{
+          // backgroundColor: '#f8f9fa',
+          height: '725px',
+          marginTop: '80px',
+          paddingTop: '30px',
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+        <div id="EventList">
+          <div className="pollHeader">
+            <Button
+              icon={<PlusOutlined />}
+              className="pollButton"
+              onClick={showModal}>
+              Create
+            </Button>
           </div>
+          <div id="PollBox"> evnets </div>
         </div>
-        <Modal
-            width={500}
-            style={{ top: 180 }}
-            bodyStyle={{ height: 300 }}
-            open={open}
-            title={
-              <TextArea
-                  className="eventTitleText"
-                  placeholder="Title"
-                  autoSize
-                  maxLength={50}
-              />
-            }
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={[
-              <Button key="back" onClick={handleCancel}>
-                Return
-              </Button>,
-              <Button
-                  key="submit"
-                  type="primary"
-                  loading={loading}
-                  onClick={handleOk}>
-                create
-              </Button>,
-            ]}>
-
-          <TextArea
-              rows={4}
-              className="eventFormText"
-              placeholder="Option"
-              maxLength={500}
-              showCount
-          />
-
-        </Modal>
       </div>
+      <Modal
+        width={500}
+        style={{ top: 180 }}
+        bodyStyle={{ height: 300 }}
+        open={open}
+        title={
+          <TextArea
+            className="eventTitleText"
+            placeholder="Title"
+            autoSize
+            maxLength={50}
+          />
+        }
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Return
+          </Button>,
+          <Button
+            key="submit"
+            type="primary"
+            loading={loading}
+            onClick={handleOk}>
+            create
+          </Button>,
+        ]}>
+        <TextArea
+          rows={4}
+          className="eventFormText"
+          placeholder="Option"
+          maxLength={500}
+          showCount
+        />
+      </Modal>
+    </div>
   );
 }
 
