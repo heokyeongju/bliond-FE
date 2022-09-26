@@ -15,8 +15,6 @@ const Oauth2 = () => {
       localStorage.setItem('accessToken', token);
       localStorage.setItem('accessTokenExpiration', accessTokenExpiration);
     }
-    console.log('token : ' + token);
-    console.log('local : ' + localStorage.getItem('accessToken'));
 
     navigate('/events');
   }, []);
