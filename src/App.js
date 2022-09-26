@@ -24,7 +24,7 @@ const App = () => {
         });
         console.log(jwt);
         setUserF(response.data);
-        console.log(userInfo);
+        console.log(userF);
       } catch {
         console.log('xxx');
       }
