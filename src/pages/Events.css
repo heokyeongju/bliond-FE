@@ -16,35 +16,84 @@
 #container {
   display: flex;
 }
-#EventList {
+
+/* 이벤트 리스트 css */
+
+#eventList {
   min-width: 350px;
   margin-top: 30px;
-  width: 60%;
+  width: 55%;
   position: relative;
+  /*border : 1px solid #aaa;*/
+  padding : 5px;
 }
 
-#PollBox {
-  height: 500px;
+#eventBox {
+  height: 280px;
   border: 1px solid #ddd;
   border-radius: 6px;
   background-color: white;
   display: flex;
   box-shadow: 1px 1px 2px 1px #eee;
+  display: block;
+  padding : 15px 25px;
+  margin-top: 8px;
+  position : relative;
 }
 
-.pollButton {
+.eventListTitle{
+  border: 1px solid #ddd;
+  height: 30px;
+}
+
+.eventListContent{
+  border: 1px solid #ddd;
+  height: 100px;
+}
+
+.eventDate {
+  border: 1px solid #ddd;
+  height: 40px;
+}
+.createDate {
+  margin-top: 50px;
+  text-align: end;
+
+}
+
+hr {
+  background: #ddd;
+  border : 0.2px solid #e5e5e5;
+  margin : 17px 0px;
+}
+
+.eventShowButton{
+  float: right;
+  margin-top: 10px;
+}
+
+.eventHeader .pollButton {
   background-color: #2367a6;
-  width: 200px;
+  width: 140px;
   height: 40px;
   border-radius: 5px;
   color: white;
 }
 
-.pollHeader {
+.eventHeader {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 5px;
+}
+
+/* 모달 속 이벤트 */
+
+
+
+.eventTitleText {
+  min-width: 300px;
+  width: 430px !important;
 }
 
 .eventFormText {
@@ -52,7 +101,3 @@
   width: 450px;
 }
 
-.eventTitleText {
-  min-width: 300px;
-  width: 400px;
-}

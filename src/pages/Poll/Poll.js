@@ -1,4 +1,4 @@
-import { Button, Modal, Input, Space } from 'antd';
+import { Button, Modal, Input, Space, Radio, Switch } from 'antd';
 
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
@@ -7,6 +7,7 @@ import EventLayout from '../../components/EventLayout';
 
 const { TextArea } = Input;
 
+
 const Poll = () => {
   const [value, setValue] = useState(1);
 
@@ -14,6 +15,10 @@ const Poll = () => {
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
+
+    const onChange1 = (checked) => {
+        console.log(`switch to ${checked}`);
+    };
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -40,7 +45,7 @@ const Poll = () => {
       <div
         id="Container" /* 전체 */
         style={{
-          backgroundColor: '#f8f9fa',
+          // backgroundColor: '#f8f9fa',
           height: '725px',
           marginTop: '80px',
           paddingTop: '30px',
@@ -108,6 +113,16 @@ const Poll = () => {
               autoSize
               maxLength={25}
             />
+            <Radio>
+              More...
+
+                  <Input
+                      style={{
+                        width: 100,
+                        marginLeft: 10,
+                      }}
+                  />
+            </Radio>
           </Space>
         </Modal>
       </div>

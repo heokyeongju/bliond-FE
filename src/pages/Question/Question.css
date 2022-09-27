@@ -23,11 +23,44 @@
 
 .listBox {
   height: 500px;
+  /*border: 1px solid #ddd;*/
+  border-radius: 6px;
+  padding: 0px 5px 5px 5px;
+}
+
+.questionBox {
+  height: 260px;
+  padding: 10px 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  background-color: white;
-  display: flex;
   box-shadow: 1px 1px 2px 1px #eee;
+}
+
+.questionListContent{
+  height: 150px;
+  border: 1px solid #ddd;
+}
+
+.questionHeader{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.questionDate {
+  width: 250px;
+  margin-bottom: 12px;
+  text-align: start;
+}
+
+.questionLike{
+  text-align: end;
+  margin-top: 4px;
+}
+
+LikeOutlined{
+  margin-top: 2px;
+  text-align: end;
 }
 
 .questionButton {
@@ -37,4 +70,55 @@
   border-radius: 5px;
   color: white;
   margin-top: 10px;
+}
+
+#questionModalButton{
+  margin-bottom: 15px;
+  text-align: end;
+  display: block;
+}
+
+#questionModalButton .modify{
+  margin-right: 10px;
+}
+#questionModalButton .delete{
+  margin-right: 18px;
+}
+
+.questionShowButton{
+  float: right;
+  margin-top: 10px;
+}
+
+/* question 모달 css */
+.questionModalContent {
+  border: 1px solid #ddd;
+  height: 250px;
+  margin: 0px 18px;
+  text-align: center;
+}
+
+.questionModalReply{
+  /*border: 1px solid #ddd;*/
+  height: 150px;
+  margin: 15px 18px;
+  text-align: center;
+}
+
+.reply{
+  width: 89.5%;
+  height: 150px;
+  float: left;
+  border: 1px solid #ddd;
+}
+
+.replySend{
+  width: 10%;
+  height: 150px;
+  display: inline-block;
+  float: right;
+  border: 1px solid #ddd;
+}
+.replyIcon{
+  margin-top: 86%;
 }

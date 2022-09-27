@@ -1,12 +1,13 @@
 import './Events.css';
 
-import { Button, Input, Modal, Space } from 'antd';
+import { Button, Input, Modal, DatePicker, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import CustomHeader from '../components/Header';
 import { useRecoilState } from 'recoil';
 
 const { TextArea } = Input;
+const { RangePicker } = DatePicker;
 
 const Events = () => {
   const [value, setValue] = useState(1);
@@ -49,23 +50,42 @@ const Events = () => {
           justifyContent: 'center',
           flexWrap: 'wrap',
         }}>
-        <div id="EventList">
-          <div className="pollHeader">
-            <Button
-              icon={<PlusOutlined />}
-              className="pollButton"
-              onClick={showModal}>
-              Create
-            </Button>
+        <div id="eventList">
+          <div className="eventHeader">
+              <Button
+                  icon={<PlusOutlined />}
+                  className="pollButton"
+                  onClick={showModal}>
+                  Create
+              </Button>
           </div>
-          <div id="PollBox"> evnets </div>
+          <div>
+              <div id="eventBox">
+                  <div className="eventDate">
+                      날짜
+                  </div>
+                  <div className="eventListTitle">
+
+                  </div>
+                  <hr />
+                  <div className="eventListContent">
+
+                  </div>
+                  <div>
+                      <Button className="eventShowButton">
+                          ->
+                      </Button>
+                  </div>
+              </div>
+          </div>
         </div>
       </div>
       <Modal
         width={500}
-        style={{ top: 180 }}
+        style={{ top: 180 , display:"flex"}}
         bodyStyle={{ height: 300 }}
         open={open}
+
         title={
           <TextArea
             className="eventTitleText"
@@ -77,9 +97,7 @@ const Events = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
-          <Button key="back" onClick={handleCancel}>
-            Return
-          </Button>,
+
           <Button
             key="submit"
             type="primary"
@@ -89,12 +107,17 @@ const Events = () => {
           </Button>,
         ]}>
         <TextArea
-          rows={4}
+          rows={5}
           className="eventFormText"
           placeholder="Option"
-          maxLength={500}
+          maxLength={100}
           showCount
         />
+          <div className="createDate">
+              <Space direction="vertical" size={12}>
+                  <RangePicker bordered={false} />
+              </Space>
+          </div>
       </Modal>
     </div>
   );
