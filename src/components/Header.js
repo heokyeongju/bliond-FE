@@ -16,7 +16,7 @@ function CustomHeader() {
                 <div className="logo">
                     사용자 정보, events_id for admin, events_name for user ...
                 </div>
-                <div className="user">{userInfo.nickname}</div>
+                <div className="user" >{userInfo.nickname}</div>
             </Header>
         </Layout>
     );

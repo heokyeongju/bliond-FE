@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { atom, useRecoilState } from 'recoil';
 import { Main, Login, Events, Question, Poll, Oauth2 } from './pages';
 import {UserAtom} from "./recoil/UserAtom";
 

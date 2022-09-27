@@ -1,21 +1,43 @@
 import './Question.css';
 import '../../components/ToastEditor.js';
 import {Button, Input, Modal, DatePicker, Space} from 'antd';
-import React from 'react';
+import React, {useState,useRef,createRef} from 'react';
 import EditorBox from '../../components/ToastEditor';
 import EventLayout from '../../components/EventLayout';
-// import {useState} from "@types/react";
-import {useState} from "react";
+import { Editor } from '@toast-ui/react-editor';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import '@toast-ui/editor/dist/i18n/ko-kr';
 import { LikeOutlined } from '@ant-design/icons';
 import { SendOutlined } from '@ant-design/icons';
+import markdownIt from "markdown-it";
+import axios from "axios";
 
-const { RangePicker } = DatePicker;
+
 
 
 const Question = () => {
 
-
+    const [content,setContent] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const editorRef = useRef();
+
+    const handleClick = async () => {
+        setContent(editorRef.current.getInstance().getMarkdown());
+        console.log(content);
+        const jwt = localStorage.getItem('accessToken');
+        if(content === ''){
+            alert('내용을 입력해주세요'); return;
+        }
+         await axios.post('/api/v1/question', {
+            headers: {
+                authorization: `Bearer ${jwt}`,
+            },
+            content:{
+                content
+            }
+        });
+    };
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -46,9 +68,18 @@ const Question = () => {
         <div id="questionForm">
           <h4>Question form</h4>
           <div id="editor">
-            <EditorBox></EditorBox>
+              <Editor
+                  initialValue=" 질문을 작성하세요. "
+                  previewStyle="vertical"
+                  height="450px"
+                  initialEditType="wysiwyg"
+                  hideModeSwitch="true"
+                  language="ko-KR"
+                  useCommandShortcut={true}
+                  ref={editorRef}
+              />
           </div>
-          <Button className="questionButton">질문 작성</Button>
+          <Button className="questionButton" onClick={handleClick} type="submit">질문 작성</Button>
         </div>
 
         <div id="questionList">
