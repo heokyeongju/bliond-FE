@@ -1,37 +1,23 @@
 import axios from 'axios';
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { Main, Login, Events, Question, Poll, Oauth2 } from './pages';
+import {UserAtom} from "./recoil/UserAtom";
 
 const App = () => {
-  const user = atom({
-    key: 'userInfo',
-    default: null,
-  });
-  const [userInfo, setUserInfo] = useRecoilState(user);
-  const [userF, setUserF] = useState('a');
-
-  const getUser = async () => {
-    const jwt = localStorage.getItem('accessToken');
-    console.log('before : ' + jwt);
-    if (jwt) {
-      try {
-        const response = await axios.get('/api/v1/member', {
-          headers: {
-            authorization: `Bearer ${jwt}`,
-          },
-        });
-        console.log(jwt);
-        setUserF(response.data);
-        console.log(userF);
-      } catch {
-        console.log('xxx');
-      }
-    }
-  };
+  const [userInfo, setUserInfo] = useRecoilState(UserAtom);
+  const [user, setUser] = useState(0);
   useEffect(() => {
-    getUser();
+    const jwt = localStorage.getItem('accessToken');
+    (async () => {
+      const { data } = await axios.get('/api/v1/member', {
+        headers: {
+          authorization: `Bearer ${jwt}`,
+        },
+      });
+      setUserInfo(data.data[0])
+    })();
   }, []);
   return (
     <div>
