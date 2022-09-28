@@ -5,36 +5,48 @@ import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import CustomHeader from '../components/Header';
 import { useRecoilState } from 'recoil';
+import axios from "axios";
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 const Events = () => {
-  const [value, setValue] = useState(1);
 
-  const onChange = (e) => {
-    console.log('radio checked', e.target.value);
-    setValue(e.target.value);
-  };
+  const [posts, setPosts] = useState([]);
 
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
+  useEffect(() => {
+      const jwt = localStorage.getItem('accessToken');
+      ( async () => {
+          const {data} = await axios.get('/api/v1/events',{
+              headers: {
+                  authorization: `Bearer ${jwt}`,
+              },
+          });
+          console.log(data.data)
+          setPosts(data.data);
+       })();
+    }, []);
 
-  const showModal = () => {
-    setOpen(true);
-  };
+    const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
 
-  const handleOk = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setOpen(false);
-    }, 3000);
-  };
+    const showModal = () => {
+        setOpen(true);
+    };
 
-  const handleCancel = () => {
-    setOpen(false);
-  };
+    const handleOk = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            setOpen(false);
+        }, 3000);
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+    };
+
+
 
   return (
     <div>

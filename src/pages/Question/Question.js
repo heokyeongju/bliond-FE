@@ -29,7 +29,7 @@ const Question = () => {
         if(content === ''){
             alert('내용을 입력해주세요'); return;
         }
-         await axios.post('/api/v1/question', {
+         await axios.post('/api/v1/event/{id}/question', {
             headers: {
                 authorization: `Bearer ${jwt}`,
             },
