@@ -9,7 +9,9 @@ const { TextArea } = Input;
 
 
 const Poll = () => {
+
   const [value, setValue] = useState(1);
+
 
   const onChange = (e) => {
     console.log('radio checked', e.target.value);
@@ -38,6 +40,24 @@ const Poll = () => {
   const handleCancel = () => {
     setOpen(false);
   };
+    const [serviceList, setServiceList] = useState([{ service: "" }]);
+
+    const handleServiceChange = (e, index) => {
+        const { name, value } = e.target;
+        const list = [...serviceList];
+        list[index][name] = value;
+        setServiceList(list);
+    };
+
+    const handleServiceRemove = (index) => {
+        const list = [...serviceList];
+        list.splice(index, 1);
+        setServiceList(list);
+    };
+
+    const handleServiceAdd = () => {
+        setServiceList([...serviceList, { service: "" }]);
+    };
 
   return (
     <>
@@ -68,7 +88,7 @@ const Poll = () => {
         <Modal
           width={800}
           style={{ top: 180 }}
-          bodyStyle={{ height: 400 }}
+          bodyStyle={{ height: 350 }}
           open={open}
           title={
             <TextArea
@@ -92,37 +112,43 @@ const Poll = () => {
               Send
             </Button>,
           ]}>
+            {/* input 추가 및 제거 코드 */}
           <Space direction="vertical">
-            <TextArea
-              className="optionText"
-              placeholder="Option"
-              autoSize
-              maxLength={25}
-            />
-
-            <TextArea
-              className="optionText"
-              placeholder="Option"
-              autoSize
-              maxLength={25}
-            />
-
-            <TextArea
-              className="optionText"
-              placeholder="Option"
-              autoSize
-              maxLength={25}
-            />
-            <Radio>
-              More...
-
-                  <Input
-                      style={{
-                        width: 100,
-                        marginLeft: 10,
-                      }}
-                  />
-            </Radio>
+              <div className="App" autoComplete="off">
+                  <div className="form-field">
+                      {serviceList.map((singleService, index) => (
+                          <div key={index} className="services">
+                              <div className="first-division">
+                                  <input
+                                      name="service"
+                                      type="text"
+                                      id="service"
+                                      value={singleService.service}
+                                      onChange={(e) => handleServiceChange(e, index)}
+                                      required/>
+                                  {serviceList.length - 1 === index && serviceList.length < 4 && (
+                                      <button
+                                          type="button"
+                                          onClick={handleServiceAdd}
+                                          className="add-btn">
+                                          <span> + </span>
+                                      </button>
+                                  )}
+                              </div>
+                              <div className="second-division">
+                                  {serviceList.length !== 2 && (
+                                      <button
+                                          type="button"
+                                          onClick={() => handleServiceRemove(index)}
+                                          className="remove-btn">
+                                          <span>X</span>
+                                      </button>
+                                  )}
+                              </div>
+                          </div>
+                      ))}
+                  </div>
+              </div>
           </Space>
         </Modal>
       </div>

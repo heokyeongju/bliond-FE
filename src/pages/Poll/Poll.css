@@ -20,7 +20,7 @@
 
 .pollButton {
   background-color: #2367a6;
-  width: 180px;
+  width: 150px;
   height: 40px;
   border-radius: 5px;
   color: white;
@@ -34,13 +34,13 @@
 }
 
 .titleText {
-  max-width: 300px;
-  width: 620px;
+  width: 700px;
+  max-width: 640px;
+  margin-top: 15px;
 }
 
 .optionText {
-  max-width: 300px;
-  width: 620px;
+  width: 650px;
 }
 
 .pollContent {
@@ -49,4 +49,72 @@
   /*!*flex-wrap: wrap;*!*/
   /*flex-direction : column ;*/
   /*justify-content: space-between;*/
+}
+
+/* input 추가 및 제거 css */
+.App {
+  width: 700px;
+  margin: 5rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-field {
+  flex: 2;
+}
+
+.form-field label, h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(84, 84, 84);
+}
+
+input {
+  height: 35px;
+  width: 100%;
+  padding: 7px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(220, 220, 220);
+}
+
+input:focus {
+  border: 1px solid rgb(0, 208, 255);
+}
+
+.services {
+  display: flex;
+  justify-content: space-between;
+}
+
+.first-division {
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px 0.5rem 0;
+  width: 100%;
+}
+
+.add-btn, .remove-btn {
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 5px 10px;
+  width: 35px;
+}
+
+.first-division button {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  color: rgb(0, 208, 255);
+  border: 1px solid rgb(0, 208, 255);
+}
+
+.second-division button {
+  color: red;
+  border: 1px solid red;
 }

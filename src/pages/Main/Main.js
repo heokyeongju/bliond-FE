@@ -19,7 +19,7 @@ const Main = () => {
       </div>
       <NavLink to="/member/login">
         <div>
-          <img src={arrow} width="150px" height="120px" alt="" />
+          <img src={arrow} width="180px" height="100px" alt="" />
         </div>
       </NavLink>
     </div>
