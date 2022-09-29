@@ -1,7 +1,7 @@
 import './Question.css';
 import '../../components/ToastEditor.js';
 import { Button, Input, Modal, DatePicker, Space } from 'antd';
-import React, { useState, useRef, createRef } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 import EventLayout from '../../components/EventLayout';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
@@ -9,12 +9,58 @@ import '@toast-ui/editor/dist/i18n/ko-kr';
 import { LikeOutlined } from '@ant-design/icons';
 import { SendOutlined } from '@ant-design/icons';
 import axios from 'axios';
+import {useParams} from "react-router-dom";
+import 'moment/locale/ko';
+import { Viewer } from '@toast-ui/react-editor';
 
 const Question = () => {
-  const [content, setContent] = useState('');
+  const { id }= useParams();
+  console.log("id:"+id);
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    const jwt = localStorage.getItem('accessToken');
+    (async () => {
+      const { data } = await axios({
+        headers: {
+          authorization: `Bearer ${jwt}`,
+        },
+        method : "get",
+        baseURL : 'http://localhost:3000/api/v1/event/',
+        url : `${id}/questions`
+      });
+      setQuestions(data.data);
+      console.log(data.data);
+      console.log(questions);
+    })();
+  }, []);
+
+
+  const [content, setContent] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const editorRef = useRef();
+  const dateParse = ( time ) => {
+    const today = new Date();
+    const timeValue = new Date(time);
+
+    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+    if (betweenTime < 1) return '방금전';
+    if (betweenTime < 60) {
+      return `${betweenTime}분전`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+      return `${betweenTimeHour}시간전`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+      return `${betweenTimeDay}일전`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)}년전`;
+  }
 
   const handleClick = async () => {
     setContent(editorRef.current.getInstance().getMarkdown());
@@ -64,10 +110,10 @@ const Question = () => {
           <h4>Question form</h4>
           <div id="editor">
             <Editor
-              initialValue=" 질문을 작성하세요. "
-              previewStyle="vertical"
+              placeholder={"질문을 작성해주세요."}
+              previewStyle="tab"
               height="450px"
-              initialEditType="wysiwyg"
+              initialEditType="markdown"
               hideModeSwitch="true"
               language="ko-KR"
               useCommandShortcut={true}
@@ -85,20 +131,24 @@ const Question = () => {
         <div id="questionList">
           <h4>Question list</h4>
           <div className="listBox">
-            <div className="questionBox">
-              <div className="questionHeader">
-                <div className="questionDate">생성 날짜</div>
-                <div className="questionLike">
-                  <LikeOutlined style={{ fontSize: '23px', color: '#08c' }} />
+            {questions.map((id) => (
+                <div className="questionBox">
+                  <div className="questionHeader">
+                    <div className="questionDate"> {dateParse(id.createdDate)} </div>
+                    <div className="questionLike">
+                      <LikeOutlined style={{ fontSize: '23px', color: '#08c' }} />
+                    </div>
+                  </div>
+                  <Viewer className="questionListContent" initialValue={id.content.substring(0,400)} />
+                  {/*<div className="questionListContent"> {id.content}</div>*/}
+                  <div>
+                    <Button className="questionShowButton" onClick={showModal}>
+                      자세히 보기
+                    </Button>
+                  </div>
                 </div>
-              </div>
+                  ))}
 
-              <div className="questionListContent"></div>
-              <div>
-                <Button className="questionShowButton" onClick={showModal}>
-                  자세히 보기
-                </Button>
-              </div>
 
               <Modal
                 className="questionModal"
@@ -124,7 +174,7 @@ const Question = () => {
                   </div>
                 </div>
               </Modal>
-            </div>
+
           </div>
         </div>
       </div>
