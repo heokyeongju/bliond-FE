@@ -6,6 +6,7 @@ import { Main, Login, Events, Question, Poll, Oauth2 } from './pages';
 import { UserAtom } from './recoil/UserAtom';
 // import SocketTest from "./socket/Socket";
 import SocketTest from "./socket/SocketTest";
+import EventDetail from "./pages/Event/EventDetail";
 
 const App = () => {
   const [userInfo, setUserInfo] = useRecoilState(UserAtom);
@@ -27,8 +28,7 @@ const App = () => {
         <Route path="/" element={<Main />} />
         <Route path="/member/login" element={<Login />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/event/:id/questions" element={<Question />} />
-        <Route path="/event/:id/polls" element={<Poll />} />
+        <Route path="/event/:eventId/*" element={<EventDetail />} />
         <Route path="/oauth2/redirect" element={<Oauth2 />} />
         <Route path="/socket/socket-test" element={<SocketTest />} />
       </Routes>

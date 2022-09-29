@@ -124,3 +124,8 @@ LikeOutlined{
 .replyIcon{
   margin-top: 86%;
 }
+.toastui-editor-contents{
+  display: block;
+  width: 100%;
+  margin-bottom: 3rem !important;
+}

@@ -9,13 +9,24 @@ import '@toast-ui/editor/dist/i18n/ko-kr';
 import { LikeOutlined } from '@ant-design/icons';
 import { SendOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import {useParams} from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import 'moment/locale/ko';
 import { Viewer } from '@toast-ui/react-editor';
+import {useRecoilValue} from "recoil";
+import {UserAtom} from "../../recoil/UserAtom";
+import {SocketTypeQuestionAtom} from "../../recoil/SocketTypeQuestionAtom";
+import 'prismjs/themes/prism.css';
+import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
+import Prism from 'prismjs';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
-const Question = () => {
-  const { id }= useParams();
-  console.log("id:"+id);
+const Question = ({ client }) => {
+  const socketTypeQuestionAtom =  useRecoilValue(SocketTypeQuestionAtom);
+  const { eventId }= useParams();
+  console.log("event id : "+ eventId)
+  const userAtom = useRecoilValue(UserAtom);
+  const memberId = userAtom.id;
+
   const [questions, setQuestions] = useState([]);
   useEffect(() => {
     const jwt = localStorage.getItem('accessToken');
@@ -26,16 +37,14 @@ const Question = () => {
         },
         method : "get",
         baseURL : 'http://localhost:3000/api/v1/event/',
-        url : `${id}/questions`
+        url : `${eventId}/questions`
       });
       setQuestions(data.data);
       console.log(data.data);
       console.log(questions);
     })();
-  }, []);
+  }, [socketTypeQuestionAtom]);
 
-
-  const [content, setContent] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const editorRef = useRef();
@@ -62,22 +71,21 @@ const Question = () => {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
   }
 
-  const handleClick = async () => {
-    setContent(editorRef.current.getInstance().getMarkdown());
-    console.log(content);
-    const jwt = localStorage.getItem('accessToken');
-    if (content === '') {
+  const handleClick = () => {
+    const text = editorRef.current.getInstance().getMarkdown();
+    if (text == null && text === '') {
       alert('내용을 입력해주세요');
       return;
     }
-    await axios.post('/api/v1/event/{id}/question', {
-      headers: {
-        authorization: `Bearer ${jwt}`,
-      },
-      content: {
-        content,
-      },
-    });
+
+    const message = {
+      "memberId": memberId,
+      "content": text,
+    }
+
+    client.send(`/questions/${eventId}`,{}, JSON.stringify(message))
+
+    editorRef.current.getInstance().reset();
   };
 
   const showModal = () => {
@@ -139,8 +147,7 @@ const Question = () => {
                       <LikeOutlined style={{ fontSize: '23px', color: '#08c' }} />
                     </div>
                   </div>
-                  <Viewer className="questionListContent" initialValue={id.content.substring(0,400)} />
-                  {/*<div className="questionListContent"> {id.content}</div>*/}
+                  <Viewer className="questionListContent" plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]} initialValue={id.content.substring(0,400)} />
                   <div>
                     <Button className="questionShowButton" onClick={showModal}>
                       자세히 보기

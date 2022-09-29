@@ -4,12 +4,12 @@ import { Button, Input, Modal, DatePicker, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import { NavLink, matchPath } from 'react-router-dom';
-import CustomHeader from '../components/Header';
+import CustomHeader from '../../components/Header';
 import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/ko';
 import { useRecoilState } from 'recoil';
-import { EventAtom } from '../recoil/EventAtom';
+import { EventAtom } from '../../recoil/EventAtom';
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
@@ -74,15 +74,15 @@ const Events = () => {
             </Button>
           </div>
           <div>
-            {events.map((id) => (
+            {events.map((event) => (
               <div id="eventBox">
                 <div className="eventDate">
-                  {moment(id.createdDate).format('YYYY-MM-DD HH:mm')}
+                  {moment(event.createdDate).format('YYYY-MM-DD HH:mm')}
                 </div>
-                <div className="eventListTitle"> {id.title}</div>
-                <div className="eventListContent">{id.description}</div>
+                <div className="eventListTitle"> {event.title}</div>
+                <div className="eventListContent">{event.description}</div>
                 <div>
-                  <NavLink to={'/event/' + id.id + '/polls'}>
+                  <NavLink to={'/event/' + event.id + '/polls'}>
                     <Button className="eventShowButton">{'->'}</Button>
                   </NavLink>
                 </div>
