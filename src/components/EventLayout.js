@@ -2,22 +2,28 @@ import './EventLayout.css';
 import { Layout, Menu } from 'antd';
 import CustomHeader from './Header';
 import React from 'react';
+import { NavLink, useParams } from 'react-router-dom';
 
 const EventLayout = () => {
+  const { id } = useParams();
+
   return (
     <div>
       <Layout>
         {/** Header 안쪽으로 사용자 정보 */}
-          <CustomHeader/>
-        {/** Menu items와 관련하여, 코드를 변경해야할 수 있음. navigation 적용*/}
+        <CustomHeader />
         <Menu
           className="menu"
           theme="light"
           mode="horizontal"
           defaultSelectedKeys={['1']}>
-          <Menu.Item>Polls</Menu.Item>
+          <NavLink to={'/event/' + id + '/polls'}>
+            <Menu.Item>Polls</Menu.Item>
+          </NavLink>
 
-          <Menu.Item>Questions</Menu.Item>
+          <NavLink to={'/event/' + id + '/questions'}>
+            <Menu.Item>Questions</Menu.Item>
+          </NavLink>
         </Menu>
 
         {/** content 안에 tab(menu)에 따른 내용 넣으면 됨. 물론 아직은 tab에 따른 nav or route 설정 안됨 */}

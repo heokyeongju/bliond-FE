@@ -3,15 +3,19 @@ import './Events.css';
 import { Button, Input, Modal, DatePicker, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
+import { NavLink, matchPath } from 'react-router-dom';
 import CustomHeader from '../components/Header';
 import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/ko';
+import { useRecoilState } from 'recoil';
+import { EventAtom } from '../recoil/EventAtom';
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 const Events = () => {
-  const [events, setEvents] = useState([]);
-
+  const [events, setEvents] = useRecoilState(EventAtom);
   useEffect(() => {
     const jwt = localStorage.getItem('accessToken');
     (async () => {
@@ -20,8 +24,10 @@ const Events = () => {
           authorization: `Bearer ${jwt}`,
         },
       });
-      console.log(data.data);
+
       setEvents(data.data);
+      console.log(data.data);
+      console.log(events);
     })();
   }, []);
 
@@ -68,13 +74,17 @@ const Events = () => {
             </Button>
           </div>
           <div>
-            {events.map((k) => (
+            {events.map((id) => (
               <div id="eventBox">
-                <div className="eventDate"> {k.createdDate}</div>
-                <div className="eventListTitle">{k.title}</div>
-                <div className="eventListContent">{k.description}</div>
+                <div className="eventDate">
+                  {moment(id.createdDate).format('YYYY-MM-DD HH:mm')}
+                </div>
+                <div className="eventListTitle"> {id.title}</div>
+                <div className="eventListContent">{id.description}</div>
                 <div>
-                  <Button className="eventShowButton">{'->'}</Button>
+                  <NavLink to={'/event/' + id.id + '/polls'}>
+                    <Button className="eventShowButton">{'->'}</Button>
+                  </NavLink>
                 </div>
               </div>
             ))}

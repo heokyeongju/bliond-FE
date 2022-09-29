@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { Main, Login, Events, Question, Poll, Oauth2 } from './pages';
-import {UserAtom} from "./recoil/UserAtom";
+import { UserAtom } from './recoil/UserAtom';
 
 const App = () => {
   const [userInfo, setUserInfo] = useRecoilState(UserAtom);
@@ -16,18 +16,18 @@ const App = () => {
           authorization: `Bearer ${jwt}`,
         },
       });
-      setUserInfo(data.data[0])
+      setUserInfo(data.data[0]);
     })();
   }, []);
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/member/login" element={<Login />} />
-        <Route exact path="/events" element={<Events />} />
-        <Route exact path="/event/:id/questions" element={<Question />} />
-        <Route exact path="/event/:id/polls" element={<Poll />} />
-        <Route exact path="/oauth2/redirect" element={<Oauth2 />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/member/login" element={<Login />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/event/:id/questions" element={<Question />} />
+        <Route path="/event/:id/polls" element={<Poll />} />
+        <Route path="/oauth2/redirect" element={<Oauth2 />} />
       </Routes>
     </div>
   );
