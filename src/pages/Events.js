@@ -5,48 +5,45 @@ import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import CustomHeader from '../components/Header';
 import { useRecoilState } from 'recoil';
-import axios from "axios";
+import axios from 'axios';
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 const Events = () => {
-
-  const [posts, setPosts] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
-      const jwt = localStorage.getItem('accessToken');
-      ( async () => {
-          const {data} = await axios.get('/api/v1/events',{
-              headers: {
-                  authorization: `Bearer ${jwt}`,
-              },
-          });
-          console.log(data.data)
-          setPosts(data.data);
-       })();
-    }, []);
+    const jwt = localStorage.getItem('accessToken');
+    (async () => {
+      const { data } = await axios.get('/api/v1/events', {
+        headers: {
+          authorization: `Bearer ${jwt}`,
+        },
+      });
+      console.log(data.data);
+      setEvents(data.data);
+    })();
+  }, []);
 
-    const [loading, setLoading] = useState(false);
-    const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const showModal = () => {
-        setOpen(true);
-    };
+  const showModal = () => {
+    setOpen(true);
+  };
 
-    const handleOk = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setOpen(false);
-        }, 3000);
-    };
+  const handleOk = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 3000);
+  };
 
-    const handleCancel = () => {
-        setOpen(false);
-    };
-
-
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -64,40 +61,32 @@ const Events = () => {
         }}>
         <div id="eventList">
           <div className="eventHeader">
-              <Button
-                  icon={<PlusOutlined />}
-                  className="pollButton"
-                  onClick={showModal}>
-                  Create
-              </Button>
+            <Button
+              icon={<PlusOutlined />}
+              className="pollButton"
+              onClick={showModal}>
+              Create
+            </Button>
           </div>
           <div>
+            {events.map((k) => (
               <div id="eventBox">
-                  <div className="eventDate">
-                      날짜
-                  </div>
-                  <div className="eventListTitle">
-
-                  </div>
-                  <hr />
-                  <div className="eventListContent">
-
-                  </div>
-                  <div>
-                      <Button className="eventShowButton">
-                          ->
-                      </Button>
-                  </div>
+                <div className="eventDate"> {k.createdDate}</div>
+                <div className="eventListTitle">{k.title}</div>
+                <div className="eventListContent">{k.description}</div>
+                <div>
+                  <Button className="eventShowButton">{'->'}</Button>
+                </div>
               </div>
+            ))}
           </div>
         </div>
       </div>
       <Modal
         width={500}
-        style={{ top: 180 , display:"flex"}}
+        style={{ top: 180, display: 'flex' }}
         bodyStyle={{ height: 300 }}
         open={open}
-
         title={
           <TextArea
             className="eventTitleText"
@@ -109,7 +98,6 @@ const Events = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
-
           <Button
             key="submit"
             type="primary"
@@ -125,11 +113,11 @@ const Events = () => {
           maxLength={100}
           showCount
         />
-          <div className="createDate">
-              <Space direction="vertical" size={12}>
-                  <RangePicker bordered={false} />
-              </Space>
-          </div>
+        <div className="createDate">
+          <Space direction="vertical" size={12}>
+            <RangePicker bordered={false} />
+          </Space>
+        </div>
       </Modal>
     </div>
   );
