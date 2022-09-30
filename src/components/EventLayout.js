@@ -5,7 +5,7 @@ import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
 const EventLayout = () => {
-  const { id } = useParams();
+  const { eventId } = useParams();
 
   return (
     <div>
@@ -17,11 +17,11 @@ const EventLayout = () => {
           theme="light"
           mode="horizontal"
           defaultSelectedKeys={['1']}>
-          <NavLink to={'/event/' + id + '/polls'}>
+          <NavLink to={'/event/' + eventId + '/polls'}>
             <Menu.Item>Polls</Menu.Item>
           </NavLink>
 
-          <NavLink to={'/event/' + id + '/questions'}>
+          <NavLink to={'/event/' + eventId + '/questions'}>
             <Menu.Item>Questions</Menu.Item>
           </NavLink>
         </Menu>

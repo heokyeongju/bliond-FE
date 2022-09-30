@@ -1,6 +1,6 @@
 import './Question.css';
 import '../../components/ToastEditor.js';
-import { Button, Input, Modal, DatePicker, Space } from 'antd';
+import { Button, Modal} from 'antd';
 import React, { useState, useRef,useEffect } from 'react';
 import EventLayout from '../../components/EventLayout';
 import { Editor } from '@toast-ui/react-editor';
@@ -139,15 +139,15 @@ const Question = ({ client }) => {
         <div id="questionList">
           <h4>Question list</h4>
           <div className="listBox">
-            {questions.map((id) => (
+            {questions.map((eventId) => (
                 <div className="questionBox">
                   <div className="questionHeader">
-                    <div className="questionDate"> {dateParse(id.createdDate)} </div>
+                    <div className="questionDate"> {dateParse(eventId.createdDate)} </div>
                     <div className="questionLike">
                       <LikeOutlined style={{ fontSize: '23px', color: '#08c' }} />
                     </div>
                   </div>
-                  <Viewer className="questionListContent" plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]} initialValue={id.content.substring(0,400)} />
+                  <Viewer className="questionListContent" plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]} initialValue={eventId.content.substring(0,400)} />
                   <div>
                     <Button className="questionShowButton" onClick={showModal}>
                       자세히 보기

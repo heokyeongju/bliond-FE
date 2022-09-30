@@ -3,7 +3,7 @@ import './Events.css';
 import { Button, Input, Modal, DatePicker, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
-import { NavLink, matchPath } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CustomHeader from '../../components/Header';
 import axios from 'axios';
 import moment from 'moment';
